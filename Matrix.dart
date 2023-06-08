@@ -45,7 +45,13 @@ class Matrix {
 		return toRet;
 	}
 	
-
+	Matrix copy() {
+		Matrix toRet = Matrix.zeros(this.rows, this.cols);
+		for (var (i, j) in this.iterate()) {
+			toRet.mat[i][j] = this.mat[i][j];
+		}
+		return toRet;
+	}
 	Matrix matMul(Matrix b) {
 		if (this.cols != b.rows) {
 			throw ("Cannot multiply matrix A:" + this.strShape() + " and B:"+ b.strShape());
